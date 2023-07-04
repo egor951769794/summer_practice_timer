@@ -22,18 +22,15 @@ export default function Panel() {
         localStorage.setItem("active", active)
     }, [active])
 
+
     const start = () => {
         turn(true);
         activate(true);
-
-        // localStorage.setItem("turned", true);
-        // localStorage.setItem("active", true);
     }
 
     const stop = () => {
         activate(false);
 
-        // localStorage.setItem("active", false);
     }
 
     const reset = () => {
@@ -44,10 +41,6 @@ export default function Panel() {
         setSeconds(0);
         localStorage.setItem("minutes", 0);
         localStorage.setItem("seconds", 0);
-
-
-        // localStorage.setItem("turned", false);
-        // localStorage.setItem("active", false);
     }
 
     const getTime = () => {
@@ -66,10 +59,10 @@ export default function Panel() {
         })
     }
 
-    if (active) return (
+    if (localStorage.getItem("active") && active) {return (
         <div className='panel'>
             microwave timer
-            <Timer handler={useEffectTimer}></Timer>
+            <Timer handler={useEffectTimer} active={localStorage.getItem("active")}></Timer>
             <Input sign="sec" turned={turned} units={seconds} unitsAccessKey={"seconds"} setUnits={setSeconds} unitsLimit={60} id={0}></Input>
             <Input sign="min" turned={turned} units={minutes} unitsAccessKey={"minutes"} setUnits={setMinutes} unitsLimit={Infinity} id={1}></Input>
             <div onClick={() => start()}>start</div>
@@ -77,7 +70,7 @@ export default function Panel() {
             <div onClick={() => reset()}>reset</div>
             <div onClick={() => {alert(localStorage.getItem("active")); alert(active)}}>get info</div>
         </div>
-    )
+    )}
     else return (
         <div className='panel'>
             microwave timer
