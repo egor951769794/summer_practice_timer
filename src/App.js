@@ -1,13 +1,15 @@
+import { useState } from 'react';
 import Background from './components/Background/Background';
 import Cube from './components/Cube/Cube';
 import Panel from './components/Panel/Panel';
 
 function App() {
+  const [finished, finish] = useState(0);
   return (
     <div className="App">
-      <Background></Background>
+      <Background isOver={finished}></Background>
       <Cube></Cube>
-      <Panel></Panel>
+      <Panel markAsFinished={finish}></Panel>
     </div>
   );
 }

@@ -30,6 +30,8 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
             document.getElementById("input-field-reset" + id.toString()).value = localStorage.getItem(unitsAccessKey) == null ? 0 : localStorage.getItem(unitsAccessKey);
         }
     }, [])
+
+    if (units.toString().length < 2) units = '0' + units.toString();
     
     return (
         turned ?

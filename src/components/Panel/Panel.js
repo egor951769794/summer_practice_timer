@@ -5,11 +5,9 @@ import { useState, useEffect } from 'react';
 import Input from '../Input/Input'
 import Timer from '../Timer/Timer';
 
-export default function Panel() {
-    // localStorage.clear();
+export default function Panel({markAsFinished}) {
     const [turned, turn] = useState(localStorage.getItem("turned") == null ? false : localStorage.getItem("turned"));
     const [active, activate] = useState(localStorage.getItem("active") == null ? false : localStorage.getItem("active"));
-    const [finished, finish] = useState(localStorage.getItem("finished") == null ? false : localStorage.getItem("finished"));
     const [totalTime, setTotalTime] = useState(0);
     const [minutes, setMinutes] = useState(localStorage.getItem("minutes") == null ? 0 : localStorage.getItem("minutes"));
     const [seconds, setSeconds] = useState(localStorage.getItem("seconds") == null ? 0 : localStorage.getItem("seconds"));
@@ -30,7 +28,6 @@ export default function Panel() {
 
     const stop = () => {
         activate(false);
-
     }
 
     const reset = () => {
@@ -41,21 +38,45 @@ export default function Panel() {
         setSeconds(0);
         localStorage.setItem("minutes", 0);
         localStorage.setItem("seconds", 0);
+        markAsFinished(false);
+    }
+
+    const finish = () => {
+        activate(false);
+
+        setMinutes(0);
+        setSeconds(0);
+        localStorage.setItem("minutes", 0);
+        localStorage.setItem("seconds", 0);
+        markAsFinished(true);
     }
 
     const getTime = () => {
         return parseInt(minutes) * 60 + parseInt(seconds);
     }
 
+    // certified javascript moment
+    let bool = (value) => {
+        if (value === 'false') return false;
+        else return value
+    }
+    
     const useEffectTimer = () => {
         useEffect(() => {
+            if (bool(active)) {
             const interval = setInterval(() => {
+                if (parseInt(getTime()) < 2) {
+                    finish();
+                    return () => {};
+                }
                 setSeconds(parseInt((getTime() - 1) % 60));
                 localStorage.setItem("seconds", parseInt((getTime() % 60) - 1));
                 setMinutes(parseInt((getTime() - 1) / 60));
                 localStorage.setItem("minutes", parseInt(getTime() / 60));
             }, 1000 )
             return () => clearInterval(interval);
+            }
+            else return () => {};
         })
     }
 
@@ -79,7 +100,6 @@ export default function Panel() {
             <div onClick={() => start()}>start</div>
             <div onClick={() => stop()}>stop</div>
             <div onClick={() => reset()}>reset</div>
-            <div onClick={() => {alert(localStorage.getItem("active")); alert(active)}}>get info</div>
         </div>
     )
 }
