@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import './Input.css'
 
 
-export default function Input({turned, units, setUnits, unitsLimit, sign, unitsAccessKey}) {
+export default function Input({turned, units, setUnits, unitsLimit, sign, unitsAccessKey, id}) {
     const handleInput = (value) => {
         if (isNaN(value) || parseInt(value) >= unitsLimit) {
             alert("Введите корректное значение!")
-            document.getElementById("input-field-reset").value = 0;
+            document.getElementById("input-field-reset" + id.toString()).value = 0;
             setUnits(0);
             localStorage.setItem(unitsAccessKey, 0);
         }
@@ -19,14 +19,16 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
     const handleEmptyInput = (value) => {
         if (value.length < 1) {
             alert("Введите корректное значение!")
-            document.getElementById("input-field-reset").value = 0;
+            document.getElementById("input-field-reset" + id.toString()).value = 0;
             setUnits(0);
             localStorage.setItem(unitsAccessKey, 0);
         }
     }
 
     useEffect(() => {
-        document.getElementById("input-field-reset").value = localStorage.getItem(unitsAccessKey) == null ? 0 : localStorage.getItem(unitsAccessKey);
+        if (document.getElementById("input-field-reset" + id.toString()) != null) {
+            document.getElementById("input-field-reset" + id.toString()).value = localStorage.getItem(unitsAccessKey) == null ? 0 : localStorage.getItem(unitsAccessKey);
+        }
     }, [])
     
     return (
@@ -37,7 +39,7 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
         </div>
         : 
         <div className='input-body'>
-            <input id="input-field-reset" className="input-text" type="text" onBlur={(event) => {handleEmptyInput(event.target.value)}} onChange={(event) => {handleInput(event.target.value)}} name="name" />
+            <input id={"input-field-reset" + id.toString()} className="input-text" type="text" onBlur={(event) => {handleEmptyInput(event.target.value)}} onChange={(event) => {handleInput(event.target.value)}} name="name" />
             <div className='input-sign'>{sign}</div>
         </div>
     )
