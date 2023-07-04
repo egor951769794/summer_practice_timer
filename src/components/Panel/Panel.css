@@ -1,0 +1,21 @@
+.panel {
+    width: 33%;
+    height: 600px;
+    background: #000;
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    border-radius: 7px;
+    color: white;
+    box-sizing: border-box;
+    padding: 12px;
+}
+
+@media (max-width: 900px) {
+    .panel {
+        left: 5%;
+        top: 55%;
+        height: 43%;
+        width: 89%;
+    }
+}
