@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/summer_practice_timer/static/css/main.2e0ec904.css",
+    "main.js": "/summer_practice_timer/static/js/main.944ccff4.js",
+    "static/media/front_active.jpg": "/summer_practice_timer/static/media/front_active.7b19d4dd04d1d96004ff.jpg",
+    "static/media/back.jpg": "/summer_practice_timer/static/media/back.5039e943ae31cd98a483.jpg",
+    "static/media/top.jpg": "/summer_practice_timer/static/media/top.e2d545ec1190d2b2deda.jpg",
+    "static/media/digital.ttf": "/summer_practice_timer/static/media/digital.2fc8618764f733394f0b.ttf",
+    "static/media/left.jpg": "/summer_practice_timer/static/media/left.a17f1abbeb846155b1ca.jpg",
+    "static/media/right.jpg": "/summer_practice_timer/static/media/right.8007ec5bac74f35ddf57.jpg",
+    "static/media/akira.otf": "/summer_practice_timer/static/media/akira.5198553380d9bb727554.otf",
+    "static/media/beep.mp3": "/summer_practice_timer/static/media/beep.2b5c8af9d327a30eaee9.mp3",
+    "index.html": "/summer_practice_timer/index.html",
+    "main.2e0ec904.css.map": "/summer_practice_timer/static/css/main.2e0ec904.css.map",
+    "main.944ccff4.js.map": "/summer_practice_timer/static/js/main.944ccff4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e0ec904.css",
+    "static/js/main.944ccff4.js"
+  ]
+}
