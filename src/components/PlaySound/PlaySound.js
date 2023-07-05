@@ -1,14 +1,30 @@
-export default function PlaySound({url, loop, play}) {
+import { Component } from "react";
 
-    let audio = new Audio(url);
-    const playAudio = () => {
-        audio.play();
+export default class PlaySound extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasError : false,
+            audio : null,
+        };
     }
-    playAudio();
 
-    return (
-        <div className="audio-player">
+    componentDidMount() {
+        this.state.audio = new Audio(this.props.url);
+        this.state.audio.play().catch(
+                    (error) => {}
+                );
+    }
 
-        </div>
-    )
+    componentDidCatch(error, info) {
+        this.state.hasError = true;
+    }
+
+
+    render() {
+        return(
+            <div className="audio-player"></div>
+        )
+        
+    }
 }

@@ -6,7 +6,7 @@ import Input from '../Input/Input'
 import Timer from '../Timer/Timer';
 import Button from '../Button/Button';
 
-export default function Panel({markAsFinished, turned, turn, active, activate, interact}) {
+export default function Panel({markAsFinished, turned, turn, active, activate}) {
     const [minutes, setMinutes] = useState(localStorage.getItem("minutes") == null ? 0 : localStorage.getItem("minutes"));
     const [seconds, setSeconds] = useState(localStorage.getItem("seconds") == null ? 0 : localStorage.getItem("seconds"));
 
@@ -22,18 +22,15 @@ export default function Panel({markAsFinished, turned, turn, active, activate, i
     const start = () => {
         turn(true);
         activate(true);
-        interact(true);
     }
 
     const stop = () => {
         activate(false);
-        interact(true);
     }
 
     const reset = () => {
         turn(false);
         activate(false);
-        interact(true);
 
         setMinutes(0);
         setSeconds(0);
@@ -45,7 +42,6 @@ export default function Panel({markAsFinished, turned, turn, active, activate, i
 
     const finish = () => {
         activate(false);
-        interact(true);
         
         setMinutes(0);
         setSeconds(0);

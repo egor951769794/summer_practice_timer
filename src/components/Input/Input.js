@@ -25,7 +25,7 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
     return (
         turned ?
         <div className='input-body'>
-            <input id={"input-field-reset" + id.toString()} onplaceholder="00" disabled={true} value={units} className="input-text input-text-input" type="text" onChange={(event) => {handleInput(event.target.value)}} name="name" />
+            <input id={"input-field-reset" + id.toString()} placeholder="00" disabled={true} value={units} className="input-text input-text-input" type="text" onChange={(event) => {handleInput(event.target.value)}} name="name" />
             <div className='input-sign'>{sign}</div>
         </div>
         : 
