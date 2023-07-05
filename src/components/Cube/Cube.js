@@ -1,9 +1,9 @@
 import './Cube.css'
 
-export default function Cube() {
+export default function Cube({rotate}) {
     return (
         <div className='stage'>
-            <div className="cube">
+            <div className={rotate? "cube rotating" : "cube"}>
                 <div className="back plane"></div>
                 <div className="top plane"></div>
                 <div className="bottom plane"></div>
