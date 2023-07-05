@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Background from './components/Background/Background';
 import Cube from './components/Cube/Cube';
 import Panel from './components/Panel/Panel';
@@ -9,9 +9,6 @@ import PlaySound from './components/PlaySound/PlaySound';
 
 function App() {
   const [finished, finish] = useState(localStorage.getItem("finished") == null ? false : localStorage.getItem("finished"));
-
-  // костыль для user didnt interacted
-  const buttonRef = useRef(null);
 
   const [turned, turn] = useState(localStorage.getItem("turned") == null ? false : localStorage.getItem("turned"));
   const [active, activate] = useState(localStorage.getItem("active") == null ? false : localStorage.getItem("active"));
@@ -31,8 +28,7 @@ function App() {
       <Background isOver={bool(finished)}></Background>
       <Cube rotate={bool(turned) && bool(active)}></Cube>
       <Panel markAsFinished={finish} turn={turn} turned={turned} activate={activate} active={active}></Panel>
-      {bool(finished) ? <PlaySound url={beep} loop={true} play={bool(finished)}></PlaySound> : null}
-      <button ref={buttonRef}></button>
+      {bool(finished) ? <PlaySound url={beep}></PlaySound> : null}
     </div>
   );
 }

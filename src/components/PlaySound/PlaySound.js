@@ -12,14 +12,9 @@ export default class PlaySound extends Component {
     componentDidMount() {
         this.state.audio = new Audio(this.props.url);
         this.state.audio.play().catch(
-                    (error) => {}
+                    () => {}
                 );
     }
-
-    componentDidCatch(error, info) {
-        this.state.hasError = true;
-    }
-
 
     render() {
         return(
