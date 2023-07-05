@@ -1,0 +1,26 @@
+.button-body {
+    margin: 0px 10px;
+    background: -webkit-radial-gradient(right, rgb(0, 0, 0), #24330e);
+    box-sizing: border-box;
+    min-width: 80px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+    border-bottom: 2px solid #42b42d;
+    text-shadow: 3px 5px 8px #ffffff;
+}
+
+.pressed {
+    transform: translate(0px, 5px);
+}
+
+.button-body:first-child {
+    margin-left: 0px;
+}
+
+.button-body:last-child {
+    margin-right: 0px;
+}

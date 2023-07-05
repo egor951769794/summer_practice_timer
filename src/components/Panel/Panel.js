@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import Input from '../Input/Input'
 import Timer from '../Timer/Timer';
+import Button from '../Button/Button';
 
 export default function Panel({markAsFinished}) {
     const [turned, turn] = useState(localStorage.getItem("turned") == null ? false : localStorage.getItem("turned"));
@@ -79,27 +80,20 @@ export default function Panel({markAsFinished}) {
             else return () => {};
         })
     }
-
-    if (localStorage.getItem("active") && active) {return (
+    
+    return (
         <div className='panel'>
-            microwave timer
+            MICROWAVE TIMER
             <Timer handler={useEffectTimer} active={localStorage.getItem("active")}></Timer>
-            <Input sign="sec" turned={turned} units={seconds} unitsAccessKey={"seconds"} setUnits={setSeconds} unitsLimit={60} id={0}></Input>
-            <Input sign="min" turned={turned} units={minutes} unitsAccessKey={"minutes"} setUnits={setMinutes} unitsLimit={Infinity} id={1}></Input>
-            <div onClick={() => start()}>start</div>
-            <div onClick={() => stop()}>stop</div>
-            <div onClick={() => reset()}>reset</div>
-            <div onClick={() => {alert(localStorage.getItem("active")); alert(active)}}>get info</div>
-        </div>
-    )}
-    else return (
-        <div className='panel'>
-            microwave timer
-            <Input sign="sec" turned={turned} units={seconds} unitsAccessKey={"seconds"} setUnits={setSeconds} unitsLimit={60} id={0}></Input>
-            <Input sign="min" turned={turned} units={minutes} unitsAccessKey={"minutes"} setUnits={setMinutes} unitsLimit={Infinity} id={1}></Input>
-            <div onClick={() => start()}>start</div>
-            <div onClick={() => stop()}>stop</div>
-            <div onClick={() => reset()}>reset</div>
+            <div className='panel-inputs'>
+                <Input sign="sec" turned={turned} units={seconds} unitsAccessKey={"seconds"} setUnits={setSeconds} unitsLimit={60} id={0}></Input>
+                <Input sign="min" turned={turned} units={minutes} unitsAccessKey={"minutes"} setUnits={setMinutes} unitsLimit={Infinity} id={1}></Input>
+            </div>
+            <div className='panel-buttons'>
+                <Button handler={start} text="START" pressed={turned && active}></Button>
+                <Button handler={stop} text="STOP" pressed={turned && !active}></Button>
+                <Button handler={reset} text="RESET"></Button>
+            </div>
         </div>
     )
 }

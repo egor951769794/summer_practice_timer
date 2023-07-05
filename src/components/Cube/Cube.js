@@ -10,6 +10,7 @@ export default function Cube() {
                 <div className="left plane"></div>
                 <div className="right plane"></div>
                 <div className="front plane"></div>
+                <div className="shadow plane"></div>
             </div>
         </div>
     )

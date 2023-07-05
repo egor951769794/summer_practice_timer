@@ -68,6 +68,13 @@
     background-image: url('./textures/top.jpg');
 }
 
+.shadow {
+    height: 300px;
+    width: 300px;
+    transform: rotateX(90deg) translateZ(-0px) translateX(-125px) translateY(-25px);
+    background: -webkit-radial-gradient(center, rgba(0, 0, 0, 0.422), rgba(0, 0, 0, 0));
+}
+
 .left::after {
     content: "";
     width: 100%;

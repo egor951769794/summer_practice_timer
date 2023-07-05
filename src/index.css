@@ -67,8 +67,23 @@ table {
 	border-spacing: 0;
 }
 
+textarea, input {
+	background: none;
+	border: none;
+	padding: none;
+	outline: none;
+	margin: 0px;
+	padding: 0px;
+}
+
 @font-face {
 	font-family: digital;
 	font: "Digital";
 	src: url('./fonts/digital.ttf') format("truetype");
+}
+
+@font-face {
+	font-family: akira;
+	font: "Akira";
+	src: url('./fonts/akira.otf') format("truetype");
 }

@@ -1,5 +1,33 @@
 .input-text {
     font-family: digital;
+    font-size: 32px;
     font: "Digital";
     font-size: 64px;
+    color: rgb(38, 183, 27);
+    text-shadow: 3px 3px 8px #42b42d;
+    border-bottom: 2px solid #42b42d; 
+    line-height: 32px;
+    width: 80%;
+    box-shadow: 6px 0 5px -2px #42b42d;
+    background: -webkit-radial-gradient(center, rgb(0, 0, 0), #24330e);
+}
+
+
+.input-text-div {
+    display: block;
+    width: 100%;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.input-text::placeholder {
+    font-size: 64px;
+    color: rgb(38, 183, 27);
+    text-shadow: 3px 3px 8px #42b42d;
+}
+
+.input-sign {
+    font-size: 16px;
+    color: rgb(38, 183, 27);
 }

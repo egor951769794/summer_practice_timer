@@ -6,7 +6,7 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
     const handleInput = (value) => {
         if (isNaN(value) || parseInt(value) >= unitsLimit) {
             alert("Введите корректное значение!")
-            document.getElementById("input-field-reset" + id.toString()).value = 0;
+            document.getElementById("input-field-reset" + id.toString()).value = "00";
             setUnits(0);
             localStorage.setItem(unitsAccessKey, 0);
         }
@@ -36,12 +36,12 @@ export default function Input({turned, units, setUnits, unitsLimit, sign, unitsA
     return (
         turned ?
         <div className='input-body'>
-            <div className='input-text'>{units}</div>
+            <input id={"input-field-reset" + id.toString()} placeholder="00" disabled={true} value={units} className="input-text input-text-input" type="text" onBlur={(event) => {handleEmptyInput(event.target.value)}} onChange={(event) => {handleInput(event.target.value)}} name="name" />
             <div className='input-sign'>{sign}</div>
         </div>
         : 
         <div className='input-body'>
-            <input id={"input-field-reset" + id.toString()} className="input-text" type="text" onBlur={(event) => {handleEmptyInput(event.target.value)}} onChange={(event) => {handleInput(event.target.value)}} name="name" />
+            <input id={"input-field-reset" + id.toString()} placeholder="00" value={units} className="input-text input-text-input" type="text" onBlur={(event) => {handleEmptyInput(event.target.value)}} onChange={(event) => {handleInput(event.target.value)}} name="name" />
             <div className='input-sign'>{sign}</div>
         </div>
     )
